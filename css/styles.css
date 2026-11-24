@@ -117,3 +117,18 @@ h1{font-size:clamp(2.4rem,9vw,4rem);animation:rise-in .9s .2s both}
   .info>div{animation-duration:.5s}
   #stars{display:none}
 }
+
+/* ===== CELULAR: sin animaciones, excepto ruleta y unas pocas partículas ===== */
+@media(max-width:699px),(hover:none){
+  .card,.hero .lead,.hero .padres,h1,h2,.art,.halo,.ring,.orn,.info>div,.confirm,
+  #open-btn,#spin-btn,#yes-btn,.btn{animation:none!important}
+  .sp,.hero::after,#stars{display:none!important}
+  .art{will-change:auto;transform:none}
+  .halo,.ring{will-change:auto}
+  .particles span:nth-child(n+6){display:none}
+  .particles span{will-change:transform,opacity}
+  /* la ruleta conserva sus animaciones (brillo, puntero, resultado) */
+  .roulette .wheel-wrap::before{animation:spin 14s linear infinite!important}
+  .roulette .pointer{animation:tick 1.6s ease-in-out infinite!important}
+  .result{animation:pop .8s cubic-bezier(.2,.9,.3,1.2) both!important}
+}
