@@ -12,35 +12,27 @@
 </head>
 <body>
 <div id="stars" aria-hidden="true"></div>
+<div class="particles" aria-hidden="true"><span style="--x:43%;--d:11s;--dl:-12s;--s:20px">♥</span><span style="--x:8%;--d:10s;--dl:-17s;--s:11px">✦</span><span style="--x:48%;--d:18s;--dl:-1s;--s:18px">✿</span><span style="--x:29%;--d:9s;--dl:-2s;--s:16px">•</span><span style="--x:55%;--d:10s;--dl:-7s;--s:11px">✧</span><span style="--x:72%;--d:15s;--dl:-1s;--s:19px">♥</span><span style="--x:17%;--d:12s;--dl:-18s;--s:10px">♥</span><span style="--x:75%;--d:18s;--dl:-12s;--s:10px">✦</span><span style="--x:30%;--d:9s;--dl:-17s;--s:12px">✿</span><span style="--x:39%;--d:15s;--dl:-4s;--s:18px">•</span><span style="--x:17%;--d:18s;--dl:-9s;--s:18px">✧</span><span style="--x:89%;--d:11s;--dl:-3s;--s:19px">♥</span><span style="--x:75%;--d:12s;--dl:-11s;--s:11px">♥</span><span style="--x:72%;--d:10s;--dl:-18s;--s:10px">✦</span><span style="--x:81%;--d:12s;--dl:-15s;--s:20px">✿</span><span style="--x:70%;--d:15s;--dl:-10s;--s:17px">•</span><span style="--x:76%;--d:16s;--dl:-11s;--s:14px">✧</span><span style="--x:33%;--d:11s;--dl:-7s;--s:11px">♥</span></div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 <p id="demo" class="demo" hidden>Modo de prueba: el resultado es simulado. En la Fase 2 lo decidirá el servidor.</p>
 
 <main>
   <section class="hero card">
-    <svg class="art" viewBox="0 0 320 320" role="img" aria-label="Osito rodeado de flores">
-      <circle cx="160" cy="160" r="148" fill="#FFF6EA" stroke="#C9A66B" stroke-width="2"/>
-      <g fill="#F7D9DD" stroke="#E8A5B0" stroke-width="1.5">
-        <circle cx="60" cy="150" r="16"/><circle cx="72" cy="105" r="13"/><circle cx="100" cy="68" r="15"/>
-        <circle cx="260" cy="150" r="16"/><circle cx="248" cy="105" r="13"/><circle cx="220" cy="68" r="15"/>
-        <circle cx="75" cy="215" r="14"/><circle cx="245" cy="215" r="14"/>
-      </g>
-      <g fill="#C9A66B"><circle cx="60" cy="150" r="4"/><circle cx="72" cy="105" r="3.5"/><circle cx="100" cy="68" r="4"/><circle cx="260" cy="150" r="4"/><circle cx="248" cy="105" r="3.5"/><circle cx="220" cy="68" r="4"/><circle cx="75" cy="215" r="3.5"/><circle cx="245" cy="215" r="3.5"/></g>
-      <circle cx="115" cy="115" r="26" fill="#D9B28C"/><circle cx="205" cy="115" r="26" fill="#D9B28C"/>
-      <circle cx="115" cy="115" r="14" fill="#F2D4BC"/><circle cx="205" cy="115" r="14" fill="#F2D4BC"/>
-      <circle cx="160" cy="165" r="62" fill="#E3BE98"/>
-      <ellipse cx="160" cy="185" rx="26" ry="20" fill="#F7E3D0"/>
-      <ellipse cx="160" cy="176" rx="8" ry="6" fill="#6B4650"/>
-      <path d="M150 190q10 8 20 0" stroke="#6B4650" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M126 152q9-7 18 0M176 152q9-7 18 0" stroke="#6B4650" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-      <circle cx="128" cy="178" r="8" fill="#F2B8C2" opacity=".7"/><circle cx="192" cy="178" r="8" fill="#F2B8C2" opacity=".7"/>
-      <path d="M130 224q30 22 60 0l10 48h-80z" fill="#F7D9DD" stroke="#E8A5B0" stroke-width="1.5"/>
-      <path d="M160 40l4 9 10 1-8 7 3 10-9-6-9 6 3-10-8-7 10-1z" fill="#C9A66B"/>
-    </svg>
+    <div class="bear-wrap">
+      <span class="halo" aria-hidden="true"></span>
+      <span class="ring" aria-hidden="true"></span>
+      <img class="art" src="assets/images/oso.png" alt="Osita con tutú rosado y flor" width="300" height="300">
+      <i class="sp s1" aria-hidden="true">✦</i>
+      <i class="sp s2" aria-hidden="true">✧</i>
+      <i class="sp s3" aria-hidden="true">♥</i>
+      <i class="sp s4" aria-hidden="true">✦</i>
+      <i class="sp s5" aria-hidden="true">✿</i>
+    </div>
     <h1>¡Estás invitado al Baby Shower de Isabella!</h1>
     <p class="lead">Una pequeña estrella viene en camino y llenará nuestra vida de ternura. Queremos celebrar su llegada contigo.</p>
     <p class="padres" id="padres"></p>
     <div class="orn" aria-hidden="true">✦</div>
-        <div id="confirm" class="confirm" hidden>
+    <div id="confirm" class="confirm" hidden>
       <h2 id="conf-nombre"></h2>
       <div id="conf-ask">
         <p class="lead">Para participar en la ruleta de regalos, primero confirma si nos acompañarás. Los regalos son para quienes asistan.</p>
@@ -57,11 +49,10 @@
     </div>
     <button id="open-btn" class="btn">DESCUBRE TU REGALO</button>
     <dl class="info">
-  <div>
-    <div><dt>Fecha</dt><dd id="ev-fecha"></dd></div>
-      <div><dt>Hora</dt><dd id="ev-hora"></dd></div>
-      <div><dt>Lugar</dt><dd id="ev-lugar"></dd></div>
-      <div><dt>Dirección</dt><dd id="ev-dir"></dd></div>
+      <div><dt>Fecha</dt><dd id="ev-fecha">Sábado 19 de diciembre</dd></div>
+      <div><dt>Hora</dt><dd id="ev-hora">3:00 p. m.</dd></div>
+      <div><dt>Lugar</dt><dd id="ev-lugar">Casa Ospina Lasso</dd></div>
+      <div><dt>Dirección</dt><dd id="ev-dir">Calle 12A #32-56</dd></div>
     </dl>
     <p id="ev-notas" class="notas" hidden></p>
   </section>
