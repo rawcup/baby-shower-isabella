@@ -7,9 +7,11 @@
     "Cobija", "Toallas para bebé|Toallas bebé", "Muselinas", "Cambiador portátil", "Biberones", "Baberos"]
     .map((s, i) => { const [nombre, etiqueta] = s.split("|"); return { id: i + 1, nombre, etiqueta: etiqueta || nombre }; });
 
+  let demoAsis = null;
   const demo = {
     async getGifts() { return DEMO.map(g => ({ ...g })); },
-    async validateToken() { return { valido: true, nombre: "Invitado de prueba", yaGiro: false, regalo: null }; },
+    async validateToken() { return { valido: true, nombre: "Invitado de prueba", yaGiro: false, regalo: null, asistencia: demoAsis }; },
+    async confirmAttendance(t, asiste) { demoAsis = asiste; },
     async spin() { await new Promise(r => setTimeout(r, 300)); return { regalo: { ...DEMO[Math.floor(Math.random() * DEMO.length)] } }; } // SOLO DEMO
   };
 
@@ -25,9 +27,10 @@
     getGifts: () => rpc("listar_regalos"),
     async validateToken(token) {
       const v = await rpc("validar_token", { p_token: token });
-      return { valido: v.valido, nombre: v.nombre, yaGiro: !!v.ya_giro, regalo: v.regalo ? v.regalo.nombre : null };
+      return { valido: v.valido, nombre: v.nombre, yaGiro: !!v.ya_giro, regalo: v.regalo ? v.regalo.nombre : null, asistencia: v.asistencia === undefined ? null : v.asistencia };
     },
-    async spin(token) { const r = await rpc("girar_ruleta", { p_token: token }); return { regalo: r.regalo }; }
+    async spin(token) { const r = await rpc("girar_ruleta", { p_token: token }); return { regalo: r.regalo }; },
+    confirmAttendance: (token, asiste) => rpc("confirmar_asistencia", { p_token: token, p_asiste: asiste })
   };
   window.Api = CONFIG.modoDemo ? demo : real;
 })();
