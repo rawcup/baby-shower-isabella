@@ -48,3 +48,5 @@ h2{font-size:clamp(1.9rem,6.5vw,2.7rem)}
 [hidden]{display:none!important}
 @media(max-width:480px){.info{grid-template-columns:1fr}.card{padding:2.2rem 1.1rem}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.confirm{margin:0 auto 1.6rem;max-width:30rem;padding:1.4rem 1.2rem;border:1px solid rgba(201,166,107,.6);border-radius:1rem;background:rgba(255,255,255,.7);animation:pop .6s both}
+.confirm h2{font-size:1.9rem;margin:.2rem 0 .6rem}
