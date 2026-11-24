@@ -17,9 +17,9 @@ window.CONFIG = {
 
   // Números que reciben el resultado (formato internacional, sin +). Editable.
   whatsapp: [
-    { nombre: "Contacto 1", numero: "573213076112" },
-    { nombre: "Contacto 2", numero: "573209206885" },
-    { nombre: "Contacto 3", numero: "573213662975" }
+    { nombre: "Daniel Ospina", numero: "573213076112" },
+    { nombre: "Camila Lasso", numero: "573209206885" },
+    { nombre: "Juan Valencia padrino", numero: "573213662975" }
   ],
 
   // Fase 2: se completan al crear el proyecto en Supabase.
