@@ -40,6 +40,21 @@
     <p class="lead">Una pequeña estrella viene en camino y llenará nuestra vida de ternura. Queremos celebrar su llegada contigo.</p>
     <p class="padres" id="padres"></p>
     <div class="orn" aria-hidden="true">✦</div>
+        <div id="confirm" class="confirm" hidden>
+      <h2 id="conf-nombre"></h2>
+      <div id="conf-ask">
+        <p class="lead">Para participar en la ruleta de regalos, primero confirma si nos acompañarás. Los regalos son para quienes asistan.</p>
+        <div class="actions">
+          <button id="yes-btn" class="btn">SÍ, ASISTIRÉ</button>
+          <button id="no-btn" class="btn ghost">No podré asistir</button>
+        </div>
+      </div>
+      <div id="conf-no" hidden>
+        <p class="lead">Registramos que no podrás acompañarnos. ¡Gracias por avisar! La ruleta es solo para quienes asisten.</p>
+        <button id="chg-btn" class="btn ghost">Cambié de opinión: sí asistiré</button>
+      </div>
+      <p id="conf-err" class="err" role="alert"></p>
+    </div>
     <button id="open-btn" class="btn">DESCUBRE TU REGALO</button>
     <dl class="info">
       <div><dt>Fecha</dt><dd id="ev-fecha"></dd></div>
