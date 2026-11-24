@@ -8,10 +8,10 @@ window.CONFIG = {
 
   // Deje en null lo que aún no se defina: la página mostrará "Por confirmar".
   evento: {
-    fecha: null,      // ej: "Sábado 14 de febrero de 2027"
-    hora: null,       // ej: "3:00 p. m."
-    lugar: null,      // ej: "Salón Los Almendros"
-    direccion: null,  // ej: "Calle 10 # 5-20, Neiva"
+    fecha: "Sabado 19 de diciembre",      // ej: "Sábado 14 de febrero de 2027"
+    hora: "3:00 p. m.",       // ej: "3:00 p. m."
+    lugar: "casa ospina lasso",      // ej: "Salón Los Almendros"
+    direccion: "calle 12a #32-56",  // ej: "Calle 10 # 5-20, Neiva"
     notas: null       // ej: "Código de vestimenta: tonos pastel"
   },
 
