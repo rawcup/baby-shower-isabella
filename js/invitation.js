@@ -50,12 +50,37 @@
       guest.token = token;
       const v = await Api.validateToken(token);
       if (!v.valido) { $("spin-zone").hidden = true; $("err").textContent = "Este enlace no es válido."; return; }
+      if (!v.yaGiro && v.asistencia !== true) { $("roulette").hidden = true; showGate(v, token); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
       guest.nombre = v.nombre; $("hola").textContent = `Hola, ${v.nombre}`;
       gifts = await Api.getGifts(); Roulette.init(gifts);
       if (v.yaGiro) showResult(v.nombre, v.regalo, true);
     } catch (e) { $("err").textContent = "No pudimos cargar la ruleta. Inténtalo más tarde."; }
   }
 
+  // Confirmación de asistencia obligatoria antes de la ruleta
+  function setDeclined(no) { $("conf-ask").hidden = no; $("conf-no").hidden = !no; }
+  function showGate(v, token) {
+    guest.token = token; guest.nombre = v.nombre;
+    $("open-btn").hidden = true; $("confirm").hidden = false;
+    $("conf-nombre").textContent = `Hola, ${v.nombre}`;
+    setDeclined(v.asistencia === false);
+  }
+  async function respond(asiste) {
+    $("conf-err").textContent = "";
+    try {
+      await Api.confirmAttendance(guest.token, asiste);
+      if (asiste) { $("confirm").hidden = true; $("open-btn").hidden = false; openRoulette(); }
+      else setDeclined(true);
+    } catch (e) { $("conf-err").textContent = "No pudimos guardar tu respuesta. Inténtalo de nuevo."; }
+  }
+  (async () => {
+    const token = new URLSearchParams(location.search).get("token") || (C.modoDemo ? "DEMO" : null);
+    if (!token) return;
+    try { const v = await Api.validateToken(token); if (v.valido && !v.yaGiro && v.asistencia !== true) showGate(v, token); } catch (e) {}
+  })();
+  $("yes-btn").addEventListener("click", () => respond(true));
+  $("no-btn").addEventListener("click", () => respond(false));
+  $("chg-btn").addEventListener("click", () => respond(true));
   $("open-btn").addEventListener("click", openRoulette);
   $("spin-btn").addEventListener("click", spin);
   $("dl-btn").addEventListener("click", () => Results.download(guest.nombre, $("res-regalo").textContent));
